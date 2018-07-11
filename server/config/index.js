@@ -1,3 +1,4 @@
 module.exports = {
-  cert: 'secert-admin'
+  cert: 'secert-admin',
+  token_cert: 'tadjkl5'
 }
