@@ -2,8 +2,16 @@ const sequelize = require('./db')
 const Sequelize = require('sequelize')
 
 const User = sequelize.define('user', {
-  uuid: Sequelize.STRING,
-  accout: Sequelize.STRING,
+  uuid: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  },
+  accout: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  },
   password: Sequelize.STRING,
   type: Sequelize.INTEGER
 }, {

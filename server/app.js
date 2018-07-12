@@ -28,6 +28,14 @@ router.use('/user', (ctx, next) => {
 
 // 注册中间件
 app.use(bodyParser())
+app.use(async (ctx, next) => {
+  ctx.body = {
+    code: 200,
+    data: {},
+    message: '请求成功！'
+  }
+  await next()
+})
 app.use(router.routes())
 app.use(router.allowedMethods())
 
