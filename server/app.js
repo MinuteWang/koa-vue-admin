@@ -31,7 +31,6 @@ app.use(bodyParser())
 app.use(async (ctx, next) => {
   ctx.body = {
     code: 200,
-    data: {},
     message: '请求成功！'
   }
   await next()

@@ -23,7 +23,9 @@ const Login = async function (ctx, next) {
   const secretPw = md5.update(password).digest('hex')
   const user = await UserModel.findUser({ ...ctx.request.body, password: secretPw })
   ctx.assert(user, 400, 'accout wrong')
-  ctx.body.data.token = jwt.sign({ uid: user.uuid }, require('../config').token_cert)
+  ctx.body.data = {
+    token: jwt.sign({ uid: user.uuid }, require('../config').token_cert)
+  }
   next()
 }
 
@@ -41,7 +43,7 @@ const Register = async function (ctx, next) {
   try {
     await UserModel.createUser(user)
   } catch (err) {
-    ctx.body.err = err
+    ctx.throw(400, '该账号已存在')
   }
   next()
 }
