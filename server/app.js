@@ -29,6 +29,7 @@ router.use('/user', (ctx, next) => {
 // 注册中间件
 app.use(bodyParser())
 app.use(async (ctx, next) => {
+  console.log(11)
   ctx.body = {
     code: 200,
     message: '请求成功！'
