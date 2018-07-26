@@ -18,24 +18,24 @@
 </template>
 
 <script>
-import { login } from '@/api/user'
+import { login } from '@/api/user';
 export default {
-  data () {
+  data() {
     return {
       form: {}
-    }
+    };
   },
   methods: {
-    onSubmit () {
-      login(this.form).then(res => {})
+    onSubmit() {
+      login(this.form).then(res => {});
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .login-container {
-  background: url("~@/assets/img/bg.jpg") no-repeat center center/cover;
+  background: url('~@/assets/img/bg.jpg') no-repeat center center/cover;
   width: 100%;
   height: 100%;
 }

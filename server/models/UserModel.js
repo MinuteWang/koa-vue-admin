@@ -1,44 +1,48 @@
-const sequelize = require('./db')
-const Sequelize = require('sequelize')
+const sequelize = require('./db');
+const Sequelize = require('sequelize');
 
-const User = sequelize.define('user', {
-  uuid: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true
+const User = sequelize.define(
+  'user',
+  {
+    uuid: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true
+    },
+    accout: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true
+    },
+    password: Sequelize.STRING,
+    type: Sequelize.INTEGER
   },
-  accout: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true
-  },
-  password: Sequelize.STRING,
-  type: Sequelize.INTEGER
-}, {
-  tableName: 'user'
-})
+  {
+    tableName: 'user'
+  }
+);
 
-const createUser = async function (data) {
+const createUser = async function(data) {
   await User.create({
     uuid: data.uuid,
     accout: data.accout,
     password: data.password,
     type: data.type
-  })
-}
+  });
+};
 
-const findUser = async function (data) {
+const findUser = async function(data) {
   const user = await User.findOne({
     attributes: ['uuid', 'type', 'accout'],
     where: {
       accout: data.accout,
       password: data.password
     }
-  })
-  return user
-}
+  });
+  return user;
+};
 
 module.exports = {
   createUser,
   findUser
-}
+};

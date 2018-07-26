@@ -7,12 +7,12 @@
 <script>
 export default {
   name: 'App'
-}
+};
 </script>
 
 <style lang="scss">
-@import "./style/index.scss";
-@import "./style/normalize.css";
+@import './style/index.scss';
+@import './style/normalize.css';
 html,
 body,
 #app {

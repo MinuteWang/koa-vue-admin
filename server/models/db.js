@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize')
-const config = require('../config/db_config')
+const Sequelize = require('sequelize');
+const config = require('../config/db_config');
 
 const sequelize = new Sequelize('store_admin', config.user, config.password, {
   host: config.host,
@@ -14,7 +14,7 @@ const sequelize = new Sequelize('store_admin', config.user, config.password, {
 
   // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
   operatorsAliases: false
-})
+});
 
 // sequelize
 //   .authenticate()
@@ -24,4 +24,4 @@ const sequelize = new Sequelize('store_admin', config.user, config.password, {
 //   .catch(err => {
 //     console.error('Unable to connect to the database:', err)
 //   })
-module.exports = sequelize
+module.exports = sequelize;

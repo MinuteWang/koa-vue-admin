@@ -1,8 +1,8 @@
-const Router = require('koa-router')
-const user = new Router()
+const Router = require('koa-router');
+const user = new Router();
 
 user.post('/test', (ctx, next) => {
-  next()
-})
+  next();
+});
 
-module.exports = user
+module.exports = user;
