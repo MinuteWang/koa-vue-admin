@@ -51,7 +51,26 @@ const Register = async function(ctx, next) {
   next();
 };
 
+const WxTest = async function(ctx, next) {
+  const token = 'xxxx', // 自定义，与公众号设置的一致
+    signature = ctx.query.signature,
+    timestamp = ctx.query.timestamp,
+    nonce = ctx.query.nonce;
+  const arr = [token, timestamp, nonce].sort();
+  const sha1 = crypto.createHash('sha1');
+  sha1.update(arr.join(''));
+  const result = sha1.digest('hex');
+
+  if (result === signature) {
+    ctx.body = ctx.query.echostr;
+  } else {
+    ctx.body = { code: -1, msg: 'fail' };
+  }
+  next();
+};
+
 module.exports = {
   Login,
-  Register
+  Register,
+  WxTest
 };
