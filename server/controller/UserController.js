@@ -52,7 +52,7 @@ const Register = async function(ctx, next) {
 };
 
 const WxTest = async function(ctx, next) {
-  const token = 'xxxx', // 自定义，与公众号设置的一致
+  const token = 'wx_wangmingli', // 自定义，与公众号设置的一致
     signature = ctx.query.signature,
     timestamp = ctx.query.timestamp,
     nonce = ctx.query.nonce;
