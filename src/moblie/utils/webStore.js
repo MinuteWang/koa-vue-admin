@@ -19,3 +19,15 @@ export function getOpenid() {
 export function setOpenid(value) {
   return session.write('Openid', value);
 }
+
+export function getToken() {
+  return session.read('token');
+}
+
+export function setToken(token) {
+  return session.write('token', token);
+}
+
+export function removeToken() {
+  return session.remove('token');
+}

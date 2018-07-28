@@ -4,6 +4,7 @@ const serve = require('koa-static');
 const path = require('path');
 const Router = require('koa-router');
 const jwt = require('jsonwebtoken');
+const logger = require('koa-logger');
 const publics = require('./routes/public');
 const user = require('./routes/user');
 const app = new Koa();
@@ -13,6 +14,13 @@ const router = new Router();
 const staticPath = './dist';
 app.use(serve(path.join(__dirname, staticPath)));
 
+router.use('/', async (ctx, next) => {
+  ctx.body = {
+    code: 200,
+    message: '请求成功！'
+  };
+  await next();
+});
 router.use('/public', publics.routes(), publics.allowedMethods());
 
 router.use(
@@ -33,14 +41,8 @@ router.use(
 );
 
 // 注册中间件
+app.use(logger());
 app.use(bodyParser());
-app.use(async (ctx, next) => {
-  ctx.body = {
-    code: 200,
-    message: '请求成功！'
-  };
-  await next();
-});
 app.use(router.routes());
 app.use(router.allowedMethods());
 

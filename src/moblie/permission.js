@@ -12,7 +12,7 @@ router.beforeEach((to, from, next) => {
     // 用户是否绑定微信
     if (isAuth()) {
       store.dispatch('WechatUserInfo', GetRequest()).then(res => {
-        next({ ...to });
+        next();
       });
     } else {
       store.dispatch('WechatAuth', `${window.location.origin}/#${to.path}`);

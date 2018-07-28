@@ -60,11 +60,11 @@ const WxTest = async function(ctx, next) {
   const sha1 = crypto.createHash('sha1');
   sha1.update(arr.join(''));
   const result = sha1.digest('hex');
-
   if (result === signature) {
-    ctx.body = ctx.query.echostr;
+    ctx.body.data = ctx.query.echostr;
   } else {
-    ctx.body = { code: -1, msg: 'fail' };
+    ctx.body.code = 405;
+    ctx.body.message = 'fail';
   }
   next();
 };
