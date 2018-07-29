@@ -15,7 +15,10 @@ router.beforeEach((to, from, next) => {
         next();
       });
     } else {
-      store.dispatch('WechatAuth', `${window.location.origin}/#${to.path}`);
+      store.dispatch(
+        'WechatAuth',
+        `${window.location.origin}/moblie.html/#${to.path}`
+      );
     }
   }
 });

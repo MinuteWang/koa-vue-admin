@@ -4,5 +4,5 @@ const _import = require('./_import_' + process.env.NODE_ENV);
 Vue.use(Router);
 
 export default new Router({
-  routes: [{ path: '/', component: _import('moblie/view/ShopHome') }]
+  routes: [{ path: '/', component: _import('ShopHome') }]
 });

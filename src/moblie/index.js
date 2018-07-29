@@ -2,11 +2,11 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import FastClick from 'fastclick';
-import App from './App';
-import router from '@/router/moblie';
-import '@/utils/rem';
-import './permission';
-import store from './store';
+import App from 'moblie/App';
+import router from 'moblie/router';
+import 'moblie/utils/rem';
+import 'moblie/permission';
+import store from 'moblie/store';
 
 Vue.config.productionTip = false;
 FastClick.attach(document.body);

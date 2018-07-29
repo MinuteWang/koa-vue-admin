@@ -23,7 +23,7 @@ const createLintingRule = () => ({
 const webpackConfig = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js',
+    app: './src/admin/main.js',
     moblie: './src/moblie/index.js'
   },
   output: {
@@ -38,7 +38,9 @@ const webpackConfig = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
+      admin: resolve('src/admin'),
+      moblie: resolve('src/moblie')
     }
   },
   module: {
@@ -114,7 +116,7 @@ module.exports = vuxLoader.merge(webpackConfig, {
     },
     {
       name: 'less-theme',
-      path: 'src/style/moblie/theme.less'
+      path: 'src/moblie/style/theme.less'
     }
   ]
 });
