@@ -4,7 +4,7 @@ const wxAuth = async (ctx, next) => {
   ctx.redirect(
     `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${
       wx_config.appid
-    }&redirect_uri=${ctx.query.callback}&response_type=${
+    }&redirect_uri=${escape(ctx.query.callback)}&response_type=${
       wx_config.response_type
     }&scope=${wx_config.scope}&state=STATE#wechat_redirect`
   );
