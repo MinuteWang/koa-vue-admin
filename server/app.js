@@ -11,8 +11,8 @@ const app = new Koa();
 const router = new Router();
 
 // 静态资源目录
-const staticPath = './dist';
-app.use(serve(path.join(__dirname, staticPath)));
+const staticPath = '../dist';
+app.use(serve(path.resolve(__dirname, staticPath)));
 
 router.use('/', async (ctx, next) => {
   ctx.body = {
