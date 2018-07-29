@@ -12,7 +12,11 @@ const router = new Router();
 
 // 静态资源目录
 const staticPath = '../dist';
-app.use(serve(path.resolve(__dirname, staticPath)));
+app.use(
+  serve(path.resolve(__dirname, staticPath), {
+    maxage: 3650000
+  })
+);
 
 router.use('/', async (ctx, next) => {
   ctx.body = {
