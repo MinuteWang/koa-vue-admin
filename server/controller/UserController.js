@@ -1,5 +1,4 @@
 const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
 const uuid = require('uuid/v1');
 const UserModel = require('../models/UserModel');
 
@@ -26,9 +25,9 @@ const Login = async function(ctx, next) {
     password: secretPw
   });
   ctx.assert(user, 400, 'accout wrong');
-  ctx.body.data = {
-    token: jwt.sign({ uid: user.uuid }, require('../config').token_cert)
-  };
+  const token = require('../utils/jwtHelper').sign({ uid: user.uuid });
+  ctx.memory.memory.create(token, {});
+  ctx.body.data = { token };
   next();
 };
 
@@ -51,26 +50,7 @@ const Register = async function(ctx, next) {
   next();
 };
 
-const WxTest = async function(ctx, next) {
-  const token = 'wx_wangmingli', // 自定义，与公众号设置的一致
-    signature = ctx.query.signature,
-    timestamp = ctx.query.timestamp,
-    nonce = ctx.query.nonce;
-  const arr = [token, timestamp, nonce].sort();
-  const sha1 = crypto.createHash('sha1');
-  sha1.update(arr.join(''));
-  const result = sha1.digest('hex');
-  if (result === signature) {
-    ctx.body.data = ctx.query.echostr;
-  } else {
-    ctx.body.code = 405;
-    ctx.body.message = 'fail';
-  }
-  next();
-};
-
 module.exports = {
   Login,
-  Register,
-  WxTest
+  Register
 };
