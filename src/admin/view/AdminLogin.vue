@@ -8,7 +8,7 @@
         <el-input v-model="form.accout"></el-input>
       </el-form-item>
       <el-form-item label="密码">
-        <el-input v-model="form.password"></el-input>
+        <el-input v-model="form.password" type="password"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即登录</el-button>
@@ -27,7 +27,9 @@ export default {
   },
   methods: {
     onSubmit() {
-      login(this.form).then(res => {});
+      this.$store.dispatch('Login', this.form).then(res => {
+        this.$router.push('/app');
+      });
     }
   }
 };

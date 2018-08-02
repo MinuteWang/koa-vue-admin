@@ -26,7 +26,7 @@ const Login = async function(ctx, next) {
   });
   ctx.assert(user, 400, 'accout wrong');
   const token = require('../utils/jwtHelper').sign({ uid: user.uuid });
-  ctx.memory.memory.create(token, {});
+  ctx.memory.create(token, {});
   ctx.body.data = { token };
   next();
 };
